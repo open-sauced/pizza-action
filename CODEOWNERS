@@ -1,0 +1,18 @@
+# This file is generated automatically by OpenSauced pizza-cli. DO NOT EDIT. Stay saucy!
+
+.github/FUNDING.yml @nickytonline
+.github/ISSUE_TEMPLATE/bug_report.md @nickytonline
+.github/ISSUE_TEMPLATE/feature_request.md @nickytonline
+.github/PULL_REQUEST_TEMPLATE.md @nickytonline
+.github/dependabot.yml @nickytonline
+.gitignore @nickytonline
+.prettierrc @nickytonline
+.sauced.yaml @nickytonline
+CODE-OF-CONDUCT.md @nickytonline
+CONTRIBUTING.md @nickytonline
+LICENSE @nickytonline
+README.md @nickytonline
+action.yml @nickytonline
+index.js @nickytonline
+package-lock.json @nickytonline
+package.json @nickytonline

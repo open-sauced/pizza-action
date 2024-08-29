@@ -1,0 +1,40 @@
+name: "OpenSauced Pizza Action"
+description: "GitHub Action to run OpenSauced's Pizza CLI's various commands"
+branding:
+  icon: "image"
+  color: "orange"
+inputs:
+  github-token:
+    description: "GitHub token"
+    required: true
+  pizza-args:
+    description: "OpenSauced Pizza CLI command to run"
+    default: "generate codeowners ./"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: "20"
+
+    - name: Install dependencies
+      run: npm ci
+      shell: bash
+      working-directory: ${{ github.action_path }}
+
+    - name: Install pizza-cli
+      run: go install github.com/open-sauced/pizza-cli@latest
+      shell: bash
+      working-directory: ${{ github.action_path }}
+
+    - name: Run action
+      run: node ${{ github.action_path }}/index.js
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      env:
+        INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
