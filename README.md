@@ -11,7 +11,7 @@ For more information about the pizza-cli. check out the OpenSauced [pizza-cli](h
 To use this action, you need to add the following to a GitHub Actions workflow file. The YAML snippet below uses the command to update your CODEOWNERS file in your repository, but replace it with whatever pizza-cli command you want to run.
 
 ```yaml
-name: Runs the OpenSauced Pizza CLI
+name: OpenSauced Pizza Action
 
 on:
   schedule:
@@ -20,14 +20,14 @@ on:
   workflow_dispatch: # Allow manual triggering
 
 jobs:
-  update-dev-card:
+  pizza-action:
     runs-on: ubuntu-latest
     steps:
       - name: Pizza Action
         uses: open-sauced/pizza-action@v1.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          command: "generate codeowners ./"
+          pizza-args: "generate codeowners ./"
 ```
 
 We suggest you add this to a workflow file in the `.github/workflows` directory of your repository and call it something like `pizza-action.yml`.

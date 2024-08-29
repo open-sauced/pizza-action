@@ -28,13 +28,12 @@ runs:
       working-directory: ${{ github.action_path }}
 
     - name: Install pizza-cli
-      run: go install github.com/open-sauced/pizza-cli@latest
+      run: npm i -g pizza
       shell: bash
-      working-directory: ${{ github.action_path }}
 
     - name: Run action
       run: node ${{ github.action_path }}/index.js
       shell: bash
-      working-directory: ${{ github.action_path }}
       env:
         INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
+        INPUT_PIZZA-ARGS: ${{ inputs.pizza-args }}
