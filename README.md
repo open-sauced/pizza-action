@@ -26,6 +26,7 @@ jobs:
       - name: Pizza Action
         uses: open-sauced/pizza-action@v1.0.0
         with:
+          # optional and false by default
           commit-and-push: "true"
 ```
 
