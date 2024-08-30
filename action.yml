@@ -1,7 +1,7 @@
 name: "OpenSauced Pizza Action"
 description: "GitHub Action to run OpenSauced's Pizza CLI's various commands"
 branding:
-  icon: "image"
+  icon: "package"
   color: "orange"
 inputs:
   pizza-args:
