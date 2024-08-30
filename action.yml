@@ -11,29 +11,42 @@ inputs:
     description: "OpenSauced Pizza CLI command to run"
     default: "generate codeowners ./"
     required: true
+  commit-and-push:
+    description: "Commit and push changes"
+    default: "false"
+    required: false
+
 runs:
   using: "composite"
   steps:
     - name: Checkout
       uses: actions/checkout@v3
-
-    - name: Setup Node
-      uses: actions/setup-node@v3
       with:
-        node-version: "20"
+        fetch-depth: 0
 
-    - name: Install dependencies
-      run: npm ci
-      shell: bash
-      working-directory: ${{ github.action_path }}
+    - name: Setup Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: "1.22.5"
 
-    - name: Install pizza-cli
-      run: npm i -g pizza
+    - name: Install pizza CLI
+      run: |
+        go install github.com/open-sauced/pizza-cli@beta
       shell: bash
 
-    - name: Run action
-      run: node ${{ github.action_path }}/index.js
+    - name: Check pizza CLI version
+      run: pizza-cli version
       shell: bash
-      env:
-        INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
-        INPUT_PIZZA-ARGS: ${{ inputs.pizza-args }}
+
+    - name: Run pizza CLI command
+      run: |
+        pwd
+        ls -la
+        pizza-cli ${{ inputs.pizza-args }}
+      shell: bash
+      working-directory: ${{ github.workspace }}
+
+    - name: Commit and push changes
+      if: ${{ inputs.commit-and-push == 'true' }}
+      run: ./commit-and-push.sh
+      shell: bash
