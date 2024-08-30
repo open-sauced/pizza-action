@@ -4,9 +4,6 @@ branding:
   icon: "image"
   color: "orange"
 inputs:
-  github-token:
-    description: "GitHub token"
-    required: true
   pizza-args:
     description: "OpenSauced Pizza CLI command to run"
     default: "generate codeowners ./"
@@ -50,3 +47,4 @@ runs:
       if: ${{ inputs.commit-and-push == 'true' }}
       run: ./commit-and-push.sh
       shell: bash
+      working-directory: ${{ github.workspace }}

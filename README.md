@@ -26,8 +26,7 @@ jobs:
       - name: Pizza Action
         uses: open-sauced/pizza-action@v1.0.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          pizza-args: "generate codeowners ./"
+          commit-and-push: "true"
 ```
 
 We suggest you add this to a workflow file in the `.github/workflows` directory of your repository and call it something like `pizza-action.yml`.
