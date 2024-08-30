@@ -32,4 +32,14 @@ jobs:
 
 We suggest you add this to a workflow file in the `.github/workflows` directory of your repository and call it something like `pizza-action.yml`.
 
-Depending on the pizza-cli command you run, different things will update. For example, if you run `pizza generate codeowners ./`, it will update the CODEOWNERS file in the root of your repository.
+Depending on the pizza CLI command you run, different things will update. For example, if you run `pizza generate codeowners ./`, it will update the CODEOWNERS file in the root of your repository.
+
+## Inputs
+
+### `pizza-args`
+
+Arguments to pass to the pizza CLI. Default is `generate codeowners ./`.
+
+### `commit-and-push`
+
+Whether to commit and push the changes made by the pizza-cli. Default is `false`.
