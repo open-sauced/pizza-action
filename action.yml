@@ -49,8 +49,8 @@ runs:
 
     - name: Setup git config
       run: |
-        git config user.name 'token-generator-app[bot]'
-        git config user.email '82042599+token-generator-app[bot]@users.noreply.github.com'
+        git config user.name 'open-sauced[bot]'
+        git config user.email '63161813+open-sauced[bot]@users.noreply.github.com'
       shell: bash
       working-directory: ${{ github.workspace }}
 
