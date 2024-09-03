@@ -45,3 +45,9 @@ Arguments to pass to the pizza CLI. Default is `generate codeowners ./`.
 ### `commit-and-push`
 
 Whether to commit and push the changes made by the pizza-cli. Default is `false`.
+
+## Troubleshooting
+
+One common isssue is the following error, `pull request create failed: GraphQL: GitHub Actions is not permitted to create or approve pull requests (createPullRequest)`. To fix this, to check _Allow GitHub Actions to create and approve pull requests_ in the repository settings under the actions section.
+
+![GitHub Actions section of a repository's settings](repositor-settings.png)
