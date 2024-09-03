@@ -8,7 +8,7 @@ inputs:
     description: "OpenSauced Pizza CLI command to run"
     default: "generate codeowners ./"
     required: true
-  commit-and-push:
+  commit-and-pr:
     description: "Commit and push changes"
     default: "false"
     required: false
@@ -57,7 +57,7 @@ runs:
     - name: Create a PR with pizza CLI changes
       env:
         GH_TOKEN: ${{ github.token }}
-      if: ${{ inputs.commit-and-push == 'true' }}
+      if: ${{ inputs.commit-and-pr == 'true' }}
       run: ${{ github.action_path }}/scripts/create-pr.sh
       shell: bash
       working-directory: ${{ github.workspace }}
