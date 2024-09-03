@@ -27,7 +27,7 @@ jobs:
         uses: open-sauced/pizza-action@v1.0.0
         with:
           # optional and false by default
-          commit-and-push: "true"
+          commit-and-pr: "true"
 ```
 
 We suggest you add this to a workflow file in the `.github/workflows` directory of your repository and call it something like `pizza-action.yml`.
@@ -42,6 +42,12 @@ The pizza CLI's "generate codeowners ./" command requires a full repository hist
 
 Arguments to pass to the pizza CLI. Default is `generate codeowners ./`.
 
-### `commit-and-push`
+### `commit-and-pr`
 
-Whether to commit and push the changes made by the pizza-cli. Default is `false`.
+Whether to commit the changes made by the pizza-cli and to create a pull request for the changes. Default is `false`.
+
+## Troubleshooting
+
+One common isssue is the following error, `pull request create failed: GraphQL: GitHub Actions is not permitted to create or approve pull requests (createPullRequest)`. To fix this, check _Allow GitHub Actions to create and approve pull requests_ in the repository settings under the actions section.
+
+![GitHub Actions section of a repository's settings](repository-settings.png)
