@@ -1,7 +1,12 @@
 #!/bin/bash
 
-PR_TITLE="chore (automated): OpenSauced updates"
 BRANCH_NAME="chore_automated_open-sauced-updates_$(date +%s)"
+
+if [[ -n "$CUSTOM_PR_TITLE" ]]; then
+  PR_TITLE="$CUSTOM_PR_TITLE"
+else
+  PR_TITLE="chore (automated): OpenSauced updates"
+fi
 
 git checkout -b "$BRANCH_NAME"
 

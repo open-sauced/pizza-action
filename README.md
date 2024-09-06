@@ -28,6 +28,8 @@ jobs:
         with:
           # optional and false by default
           commit-and-pr: "true"
+          # optional
+          pr-title: "chore: update repository codeowners"
 ```
 
 We suggest you add this to a workflow file in the `.github/workflows` directory of your repository and call it something like `pizza-action.yml`.
@@ -45,6 +47,10 @@ Arguments to pass to the pizza CLI. Default is `generate codeowners ./`.
 ### `commit-and-pr`
 
 Whether to commit the changes made by the pizza-cli and to create a pull request for the changes. Default is `false`.
+
+### `pr-title`
+
+Provides a custom pull request title to be used if the `commit-and-pr` option is enabled. Default is `chore (automated): OpenSauced updates`.
 
 ## Troubleshooting
 
