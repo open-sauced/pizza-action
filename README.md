@@ -34,15 +34,15 @@ jobs:
 
 We suggest you add this to a workflow file in the `.github/workflows` directory of your repository and call it something like `pizza-action.yml`.
 
-Depending on the pizza CLI command you run, different things will update. For example, if you run `pizza generate codeowners ./`, it will update the CODEOWNERS file in the root of your repository.
+Depending on the pizza CLI command you run, different things will update. For example, if you run `pizza generate codeowners ./ --tty-disable`, it will update the CODEOWNERS file in the root of your repository.
 
-The pizza CLI's "generate codeowners ./" command requires a full repository history to accurately determine code ownership over time. Fetch-depth is set to 0 in this action to ensure all historical commits are available, allowing the command to analyze the entire project timeline and produce a comprehensive CODEOWNERS file.
+The pizza CLI's "generate codeowners ./ --tty-disable" command requires a full repository history to accurately determine code ownership over time. Fetch-depth is set to 0 in this action to ensure all historical commits are available, allowing the command to analyze the entire project timeline and produce a comprehensive CODEOWNERS file.
 
 ## Inputs
 
 ### `pizza-args`
 
-Arguments to pass to the pizza CLI. Default is `generate codeowners ./`.
+Arguments to pass to the pizza CLI. Default is `generate codeowners ./ --tty-disable`.
 
 ### `commit-and-pr`
 

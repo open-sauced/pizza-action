@@ -6,7 +6,7 @@ branding:
 inputs:
   pizza-args:
     description: "OpenSauced Pizza CLI command to run"
-    default: "generate codeowners ./"
+    default: "generate codeowners ./ --tty-disable"
     required: true
   commit-and-pr:
     description: "Commit and push changes"
