@@ -36,7 +36,7 @@ runs:
 
     - name: Install pizza CLI
       run: |
-        go install github.com/open-sauced/pizza-cli${{ inputs.cli-version }}
+        go install github.com/open-sauced/pizza-cli@${{ inputs.cli-version }}
       shell: bash
 
     - name: Check pizza CLI version

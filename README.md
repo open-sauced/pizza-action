@@ -26,8 +26,8 @@ jobs:
       - name: Pizza Action
         uses: open-sauced/pizza-action@v1.0.0
         with:
-          # optional and default is "@latest". Add this parameter if you want to use a specific version, e.g. v2.0.0
-          cli-version: "@v2.0.0"
+          # optional and default is "latest". Add this parameter if you want to use a specific version, e.g. v2.0.0
+          cli-version: "v2.1.0"
           # optional and false by default. Set this to true if you want to have a pull request for the changes created automatically.
           commit-and-pr: "true"
           # optional
@@ -44,7 +44,7 @@ The pizza CLI's "generate codeowners ./ --tty-disable" command requires a full r
 
 ### `cli-version`
 
-The version of the pizza CLI to use. Default is `@latest`. If using a numbered version, make sure to include the `@` symbol as well as a `v` before the version number. For example, `@v2.0.0`.
+The version of the pizza CLI to use. Default is `latest`. If using a numbered version, make sure to prefix the version number with `v`. For example, `v2.0.0`.
 
 ### `pizza-args`
 
