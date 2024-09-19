@@ -10,7 +10,7 @@ inputs:
     required: false
   pizza-args:
     description: "OpenSauced Pizza CLI command to run"
-    default: "generate codeowners ./ --tty-disable"
+    default: "generate codeowners /repository --tty-disable"
     required: false
   commit-and-pr:
     description: "Commit and push changes"
@@ -29,25 +29,16 @@ runs:
       with:
         fetch-depth: 0
 
-    - name: Setup Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: "1.22.5"
-
-    - name: Install pizza CLI
-      run: |
-        go install github.com/open-sauced/pizza-cli@${{ inputs.cli-version }}
-      shell: bash
-
     - name: Check pizza CLI version
-      run: pizza-cli version
+      run: |
+        DOCKERIMAGE="ghcr.io/open-sauced/pizza-cli:${{ inputs.cli-version }}"
+        docker run $DOCKERIMAGE version
       shell: bash
 
     - name: Run pizza CLI command
       run: |
-        pwd
-        ls -la
-        pizza-cli ${{ inputs.pizza-args }}
+        DOCKERIMAGE="ghcr.io/open-sauced/pizza-cli:${{ inputs.cli-version }}"
+        docker run -v ./:/repository $DOCKERIMAGE ${{ inputs.pizza-args }}
       shell: bash
       working-directory: ${{ github.workspace }}
 
