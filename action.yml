@@ -10,7 +10,7 @@ inputs:
     required: false
   pizza-args:
     description: "OpenSauced Pizza CLI command to run"
-    default: "generate codeowners /repository --tty-disable"
+    default: "generate codeowners ./ --tty-disable"
     required: false
   commit-and-pr:
     description: "Commit and push changes"
@@ -29,16 +29,8 @@ runs:
       with:
         fetch-depth: 0
 
-    - name: Set up Docker image
-      run: echo "DOCKER_IMAGE=ghcr.io/open-sauced/pizza-cli:${{ inputs.cli-version }}" >> $GITHUB_ENV
-      shell: bash
-
-    - name: Check pizza CLI version
-      run: docker run ${{ env.DOCKER_IMAGE }} version
-      shell: bash
-
     - name: Run pizza CLI command
-      run: docker run -v ./:/repository ${{ env.DOCKER_IMAGE }} ${{ inputs.pizza-args }}
+      run: npx --yes pizza@${{ inputs.cli-version }} ${{ inputs.pizza-args }}
       shell: bash
       working-directory: ${{ github.workspace }}
 
