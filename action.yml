@@ -6,7 +6,7 @@ branding:
 inputs:
   cli-version:
     description: "OpenSauced Pizza CLI version to use"
-    default: "@latest"
+    default: "latest"
     required: false
   pizza-args:
     description: "OpenSauced Pizza CLI command to run"
