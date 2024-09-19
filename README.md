@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pizza Action
-        uses: open-sauced/pizza-action@v2.2.0
+        uses: open-sauced/pizza-action@latest
         with:
           # optional and default is "latest". Add this parameter if you want to use a specific version, e.g. v2.0.0
           cli-version: "v2.2.0"
@@ -44,14 +44,11 @@ The pizza CLI's "generate codeowners ./ --tty-disable" command requires a full r
 
 ### `cli-version`
 
-The version of the pizza CLI to use. Default is `latest`. If using a numbered version, make sure to prefix the version number with `v`. For example, `v2.0.0`.
+The version of the pizza CLI to use. Default is `latest`. If using a numbered version, make sure to prefix the version number with `v`. For example, `v2.2.0`.
 
 ### `pizza-args`
 
-Arguments to pass to the pizza CLI. Default is `generate codeowners /repository --tty-disable`.
-
-> [!NOTE]
-> `/repository` is the path to the repository root where the pizza-cli will be run in Docker.
+Arguments to pass to the pizza CLI. Default is `generate codeowners ./ --tty-disable`.
 
 ### `commit-and-pr`
 
