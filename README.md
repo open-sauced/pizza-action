@@ -48,7 +48,10 @@ The version of the pizza CLI to use. Default is `latest`. If using a numbered ve
 
 ### `pizza-args`
 
-Arguments to pass to the pizza CLI. Default is `generate codeowners ./ --tty-disable`.
+Arguments to pass to the pizza CLI. Default is `generate codeowners /repository --tty-disable`.
+
+> [!NOTE]
+> `/repository` is the path to the repository root where the pizza-cli will be run in Docker.
 
 ### `commit-and-pr`
 
