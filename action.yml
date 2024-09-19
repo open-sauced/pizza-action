@@ -29,16 +29,16 @@ runs:
       with:
         fetch-depth: 0
 
+    - name: Set up Docker image
+      run: echo "DOCKER_IMAGE=ghcr.io/open-sauced/pizza-cli:${{ inputs.cli-version }}" >> $GITHUB_ENV
+      shell: bash
+
     - name: Check pizza CLI version
-      run: |
-        DOCKERIMAGE="ghcr.io/open-sauced/pizza-cli:${{ inputs.cli-version }}"
-        docker run $DOCKERIMAGE version
+      run: docker run ${{ env.DOCKER_IMAGE }} version
       shell: bash
 
     - name: Run pizza CLI command
-      run: |
-        DOCKERIMAGE="ghcr.io/open-sauced/pizza-cli:${{ inputs.cli-version }}"
-        docker run -v ./:/repository $DOCKERIMAGE ${{ inputs.pizza-args }}
+      run: docker run -v ./:/repository ${{ env.DOCKER_IMAGE }} ${{ inputs.pizza-args }}
       shell: bash
       working-directory: ${{ github.workspace }}
 
